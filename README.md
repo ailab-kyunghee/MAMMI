@@ -39,3 +39,7 @@ run 'concept_matching.py'
 
 ## Visualization
 TBD
+
+## Acknowledgement
+This work was supported by the IITP grant funded by the Korea government (MSIT) 
+(No.RS2022-00155911, Artificial Intelligence Convergence Innovation Human Resources Development (Kyung Hee University)).
