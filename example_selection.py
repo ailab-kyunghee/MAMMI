@@ -1,4 +1,5 @@
 from torchvision import models
+from models import densenet
 from torchvision.utils import save_image
 import torch
 from tqdm import tqdm
@@ -16,8 +17,7 @@ NIH_CLASS = ['Atelectasis', 'Cardiomegaly', 'Effusion', 'Infiltration', 'Mass',
              'Nodule', 'Pneumonia', 'Pneumothorax', 'Consolidation', 'Edema',
              'Emphysema', 'Fibrosis', 'Pleural thickening', 'Hernia']
 
-# NIH14_DATA_PATH = 'YOUR_PATH'
-NIH14_DATA_PATH = '/data2/local_datasets/www_data/nih_chest_x-rays/imgs'
+NIH14_DATA_PATH = 'YOUR_PATH/nih_chest_x-rays/imgs'
 def setting(args):
     # dataset path / target label path / csv path
     if args.dataset == 'nih-14':
@@ -40,7 +40,8 @@ def load_model(target_model, dataset, layer):
     if dataset == 'nih-14':
         if target_model == 'densenet121':
             checkpoint = torch.load('./pretrained/target_model/densenet121_CXR_0.3M_mocov2.pth', map_location='cpu')
-            model = models.__dict__['densenet121'](num_classes=14)
+            # model = models.__dict__['densenet121'](num_classes=14)
+            model = densenet.__dict__['densenet121'](num_classes=14)
             if layer == 'penultimate':
                 model.classifier = torch.nn.Identity()
 

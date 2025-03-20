@@ -10,6 +10,23 @@ import utils.med_metric_utils as metric
 from sentence_transformers import SentenceTransformer
 
 PROJECT = os.path.dirname(os.path.realpath(__file__))
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='Concept Matching')
+    parser.add_argument('--feat_path', default='results/features', help='Path to save features(img & word)') #
+    parser.add_argument('--concept_path', default='results/concept', help='Path to save concept') #
+    parser.add_argument('--template_ver', default='base', help='base / locate / no')
+    parser.add_argument('--adaptive', default='yes', help='yes / no')
+    parser.add_argument('--model_target', default='densenet121', help='densenet121 / resnet50 / vit-b')
+    
+    parser.add_argument('--alpha', default=95, type=int, help='# of concept to select in img')
+    parser.add_argument('--adaptive_percent', default=93, type=int, help='90~95')
+    parser.add_argument('--dataset', default='nih-14')
+    parser.add_argument('--concept_set', default='mimic_nouns')
+    parser.add_argument('--layer', default='fc', help='fc / penultimate')
+    parser.add_argument('--model_clip', default='medclip')
+    return parser.parse_args()
+
 def setting(args):
     # example root
     if args.dataset == 'nih-14':
@@ -58,24 +75,6 @@ def load_model(model_name, text=None):
         model.cuda()
         return preprocessor, model
     
-def parse_args():
-    parser = argparse.ArgumentParser(description='Concept Matching')
-    parser.add_argument('--feat_path', default='results/features', help='Path to save features(img & word)') #
-    parser.add_argument('--concept_path', default='results/concept', help='Path to save concept') #
-    parser.add_argument('--concept_sim_num', default=3, type=int, help='# of split concept sim')
-    parser.add_argument('--template_ver', default='base', help='base / locate / no')
-    parser.add_argument('--adaptive', default='yes', help='yes / no')
-    # parser.add_argument('--model_target', default='densenet121', help='densenet121 / resnet50 / vit-b')
-    parser.add_argument('--model_target', default='resnet50', help='densenet121 / resnet50 / vit-b')
-    
-    parser.add_argument('--alpha', default=95, type=int, help='# of concept to select in img')
-    parser.add_argument('--adaptive_percent', default=93, type=int, help='90~95')
-    parser.add_argument('--dataset', default='nih-14')
-    parser.add_argument('--concept_set', default='mimic_nouns')
-    parser.add_argument('--layer', default='fc', help='fc / penultimate')
-    parser.add_argument('--model_clip', default='medclip')
-    return parser.parse_args()
-
 def main():
     args = parse_args()
     args.feat_path = os.path.join(PROJECT, args.feat_path)

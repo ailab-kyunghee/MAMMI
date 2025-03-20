@@ -2,5 +2,6 @@ __pycache__/
 
 pretrained/
 results/
+dataset/report/
 
-temp.py
+dataset/nih-det_bbox_img/
