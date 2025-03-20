@@ -13,7 +13,7 @@ def clean_text(text):
     return text
 
 report_path = './dataset/report/mimic_test_unique.txt'
-nouns_path = f'./dataset/report/nouns.txt'
+nouns_path = f'./dataset/concept_set/nouns.txt'
 
 with open(report_path, 'r') as f: 
     report = (f.read()).split('\n')

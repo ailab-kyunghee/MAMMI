@@ -20,9 +20,8 @@ PROJECT = os.path.dirname(os.path.realpath(__file__))
 
 def detail_setting(args):
     NIH_DET_PATH = 'YOUR_PATH' # f'{PROJECT}/dataset/nih-det_box/{args.split}_'
-    NIH_DET_ANNOTATION = 'YOUR_PATH' # f'{PROJECT}/dataset/annotation/ChestX_Det/ChestX_Det_{args.split}.json'
     if args.dataset == 'nih-det':
-        args.dataset_path = f'{PROJECT}/dataset/nih-det_bbox_img/{args.split}_'
+        args.dataset_path = NIH_DET_PATH
         args.split_path = f'{PROJECT}/dataset/det_split/ChestX_Det_{args.split}.json'
 
     class_path = f'{PROJECT}/dataset/nih_split/nih_labels.txt'

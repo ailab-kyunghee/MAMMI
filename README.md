@@ -22,7 +22,7 @@ pip install -r requirements.txt
     - Probing set:
     [NIH14](https://www.kaggle.com/datasets/nih-chest-xrays/data?select=test_list.txt), [ChestX-det](https://github.com/Deepwise-AILab/ChestX-Det-Dataset?tab=readme-ov-file) (for visualization)
     - Concept set: MIMIC-CXR Report (following [R2Gen](https://github.com/cuhksz-nlp/R2Gen?tab=readme-ov-file));
-    We provide preprocessed concept set by MIMIC CXR Report test data. ('./dataset/report/nouns.txt)  
+    We provide preprocessed concept set by MIMIC CXR Report test data. ('./dataset/concept_set/nouns.txt)  
     Also, we povide processing code for concept set consturction. (`prepare_mimic_nouns.py`)
 
     **Pre-trained model**  
@@ -30,7 +30,7 @@ pip install -r requirements.txt
     Put in `pretrained/target_model/{TARGET_MODEL.pth}`
 
 ## 1. Prepare Concept set (MIMIC Nouns)
-We already provide concept set file. `dataset/report/nouns.txt`.  
+We already provide concept set file. `dataset/concept_set/nouns.txt`.  
 If you want to create concept set, run 'prepare_mimic_nouns.py' 
 * \# of MIMIC Nouns = 1361  
 

@@ -33,7 +33,7 @@ def setting(args):
         args.examples = f'{PROJECT}/results/examples/{args.model_target}/{args.dataset}_adap_{args.adaptive_percent}_examples/{args.layer}'
         
     if args.concept_set == 'mimic_nouns':
-        args.concept_set_path = f'{PROJECT}/dataset/report/nouns.txt'
+        args.concept_set_path = f'{PROJECT}/dataset/concept_set/nouns.txt'
 
     args.concept_sim_path = os.path.join(args.concept_path, f'{args.dataset}_adap_{args.adaptive_percent}', args.model_clip)
     if not os.path.exists(args.concept_sim_path):
